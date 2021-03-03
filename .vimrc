@@ -1,23 +1,45 @@
 set runtimepath^=~/.vim
 
 call plug#begin('~/.vim/plugged')
+Plug 'Valloric/YouCompleteMe'
 
-" https://github.com/romainl/flattened
-Plug 'romainl/flattened'
+Plug 'skanehira/badapple.vim'
 
-" https://github.com/itchyny/lightline.vim
-Plug 'itchyny/lightline.vim'
+Plug 'AndrewRadev/dealwithit.vim'
 
-" https://github.com/scrooloose/nerdtree
 Plug 'scrooloose/nerdtree'
 
-" https://github.com/Shougo/neocomplete.vim
+Plug 'airblade/vim-gitgutter'
+
+Plug 'vim-airline/vim-airline'
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'sainnhe/sonokai'
+
+Plug 'rip-rip/clang_complete'
+
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 call plug#end()
-
-
+"set paste
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 autocmd vimenter * NERDTree
 
+        if has('termguicolors')
+          set termguicolors
+        endif
+        " The configuration options should be placed before `colorscheme sonokai`.
+        let g:sonokai_style = 'andromeda'
+		colorscheme sonokai
+
+syntax on
+" path to directory where library can be found
+ let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+"set
+retab
+set backspace=indent,eol,start
 set laststatus=2
 set noshowmode
 set mouse=a
@@ -25,10 +47,13 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab
-set colorcolumn=80
-autocmd TextChanged,TextChangedI <buffer> silent write
+set number
+set hlsearch
+set incsearch
 
-highlight ColorColumn ctermbg=green
+"end set
+
+autocmd TextChanged,TextChangedI <buffer> silent write
 
 let g:neocomplcache_enable_at_startup = 1
 
