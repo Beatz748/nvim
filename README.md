@@ -1,4 +1,4 @@
-# How to install ? hehlol 
+# How to install ? heh,lol -> 
 
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
