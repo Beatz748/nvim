@@ -1,0 +1,15 @@
+snippet main "Main function for GoLang" b
+func main() {
+	${1}
+}
+endsnippet
+
+snippet err  "error" b
+if err != nil {
+	fmt.Println("Error while ${1}: ", err)
+}
+endsnippet
+
+snippet print "fmt.Println" b
+fmt.Println(${1})
+endsnippet
