@@ -2,35 +2,40 @@ set nocompatible              " be iMproved, required
 filetype plugin on
 ""set omnifunc=syntaxcomplete#Complete
 
+
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.config/nvim/plugged/Vundle.vim
+call vundle#begin('~/.config/nvim/plugged')
+
+Plugin 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown' }
+
+
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'fatih/vim-go'
 
+Plugin 'vim-syntastic/syntastic'
 
+
+Plugin 'neoclide/coc.nvim'
 
 
 "Theme
 
-"Plugin 'tomasr/molokai'
 Plugin 'dracula/vim'
 
 Plugin 'scrooloose/nerdtree'
 
-"Plugin 'ingram1107/moneokai'
 
 Plugin 'SirVer/ultisnips'
 
-"Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
 
 "************************************BEATZ CONFIGURATION*************************"
 
@@ -62,15 +67,18 @@ autocmd FocusLost * silent! wall
 " Auto-closing brackets
 
 inoremap ( ()<Left>
-inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
+inoremap { {}<Left>
+
+
+
 
 " Snippets configurations
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<Enter>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+""let g:UltiSnipsExpandTrigger="<tab>"
+""let g:UltiSnipsJumpForwardTrigger="<Enter>"
+""let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 colorscheme dracula
 
@@ -91,16 +99,10 @@ set backspace=indent,eol,start
 
 "************************************BEATZ CONFIGURATION*************************"
 "
-let g:ycm_autoclose_preview_window_after_completion = 1
 
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_autoclose_preview_window_after_completion = 0
-
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#fnamemod = ':t'
+""let g:airline#extensions#tabline#enabled = 1
+""let g:airline#extensions#tabline#formatter = 'unique_tail'
+""let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Enable autocompletion
 let g:go_auto_type_info = 1
@@ -142,24 +144,9 @@ let g:go_highlight_operators = 1
 " Show identifier info in status bar
 let g:go_auto_type_info = 1
 
-let g:go_doc_popup_window = 1
-let g:go_metlainter_command = "staticcheck"
-" May be set to gofmt instead, beacuse of some people claims
-" that goimports may take long time for work.
-let g:go_fmt_command = "goimports"
-" Some vim-go remaps for easy invoke `go vet`, `gofmt`,`staticcheck`
-" and `go-doc. Remaping works with \v, \f, \l and \d respectively
-autocmd FileType go nnoremap <leader>f :GoFmt<CR>
-autocmd FileType go nnoremap <leader>l :GoMetaLinter<CR>
-autocmd FileType go nnoremap <leader>d :GoDoc<CR>
-" go vet can be replaced with statickcheck
-" autocmd FileType go nnoremap <leader>v :GoVet!<CR>
+let g:coc_global_extensions = {
+  \ "suggest": {
+    \ "maxItemCount": 10
+    \ }
+  \ }
 
-" Supress vim-go autocomplete preview window
-set completeopt-=preview
-
-" Autoclose vim-go autocomplete preview window when
-" close autocomplete popup hover window
-augroup completion_preview_close
-  autocmd!
-  autocmd CompleteDone * if !&previewwindow && &completeopt =~ 'preview' | silent! pclose | augroup END

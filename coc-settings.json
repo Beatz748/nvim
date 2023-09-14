@@ -1,0 +1,33 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"],
+      "minHeight": 6
+    }
+  },
+  "clangd.path": "clangd",  // Путь к исполняемому файлу clangd
+  "clangd.arguments": ["--background-index"],  // Дополнительные аргументы для clangd
+  "clangd.completion.enableSnippetInsertion": true,  // Включить вставку сниппетов
+  "clangd.completion.enable": true,  // Включить автодополнение
+  "clangd.semanticHighlighting": true,  // Включить подсветку семантики
+  "clangd.hover": true  // Включить подсказки по наведению курсора
+{
+  "rust-analyzer.enable": true,  // Включить поддержку Rust
+  "rust-analyzer.serverPath": "/Users/pavel/.cargo/bin/rust-analyzer",  // Путь к исполняемому файлу rust-analyzer (если не указан, будет использован PATH)
+  "rust-analyzer.cargo-watch.enable": true,  // Включить автоматическую пересборку при изменении кода
+  "rust-analyzer.checkOnSave.enable": true,  // Выполнять проверку при сохранении файла
+  "rust-analyzer.checkOnSave.allTargets": true,  // Проверять все цели проекта
+  "rust-analyzer.checkOnSave.command": "clippy",  // Команда для выполнения при проверке (например, "clippy" или "check")
+  "rust-analyzer.inlayHints.enable": true,  // Включить вставляемые подсказки (например, типы переменных)
+  "rust-analyzer.highlight.enable": true,  // Включить подсветку синтаксиса и ошибок
+  "rust-analyzer.cargo.displayInStatusBar": "short",  // Отображение информации о проекте в строке состояния
+  "rust-analyzer.completion.enable": true,  // Включить автодополнение
+  "rust-analyzer.completion.racerCompletion": false,  // Использовать Language Server для автодополнения
+  "rust-analyzer.completion.addCallArgumentSnippets": true,  // Добавлять сниппеты при автодополнении вызовов функций
+  "rust-analyzer.completion.enableSnippetInsertion": true  // Включить вставку сниппетов при автодополнении
+}
+
+}
+
