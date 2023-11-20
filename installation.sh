@@ -4,6 +4,11 @@ echo "Creating directory for nvim"
 mkdir -p $HOME/.config
 mkdir -p $HOME/.config/nvim
 
+echo "Installing nodejs python3 clangd"
+brew install python3
+brew install llvm
+brew install nodejs
+
 export VUNDLE="${HOME}/.config/nvim/plugged/Vundle.vim" # You can edit this line, if you already
 							# donwloaded Vundle, set another path.
 echo "Vundle will be downloaded to the $VUNDLE"
