@@ -1,13 +1,9 @@
 
 echo "Creating directory for nvim"
+echo "Install before: python3 nodejs llvm"
 
 mkdir -p $HOME/.config
 mkdir -p $HOME/.config/nvim
-
-echo "Installing nodejs python3 clangd"
-brew install python3
-brew install llvm
-brew install nodejs
 
 export VUNDLE="${HOME}/.config/nvim/plugged/Vundle.vim" # You can edit this line, if you already
 							# donwloaded Vundle, set another path.
@@ -21,13 +17,12 @@ echo "set rtp+=${VUNDLE}" | cat - init.vim > temp && mv temp init.vim
 
 echo "If you are using zshrc, you can type 'v' instead of 'nvim'"
 alias v=nvim >> $HOME/.zshrc
+alias vim=nvim >> $HOME/.zshrc
 
 echo "copy settings to default directory"
 cp coc-settings.json init.vim $HOME/.config/nvim/
 
 cd ..
-
-rm -rf nvim
 
 nvim -c ":PluginInstall" -c ":q" -c ":q"
 
